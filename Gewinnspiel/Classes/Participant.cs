@@ -85,7 +85,11 @@ namespace Gewinnspiel.Classes
 
         public string Password { get; set; }
 
-        public bool Inactive { get; set; }
+        public bool Inactive
+        {
+            get { return inactive; }
+            set { inactive = value; }
+        }
 
         public string FirstName
         {

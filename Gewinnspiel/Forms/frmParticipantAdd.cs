@@ -76,6 +76,7 @@ namespace Gewinnspiel.Forms
                 frmLogin.frmLog.serializeParticipants();
 
                 MessageBox.Show("Registrieren erfolgreich");
+                this.Close();
             }
             catch (Exception ex)
             {

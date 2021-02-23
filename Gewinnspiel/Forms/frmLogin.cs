@@ -31,11 +31,17 @@ namespace Gewinnspiel.Forms
         
         internal List<Participant> participants;
 
+        internal Participant activeUser;
+        internal frmAdmin frmAd;
+        internal frmParticipant frmPart;
+
         XmlSerializer serializer;
         #endregion
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            frmAd = new frmAdmin();
+            frmPart = new frmParticipant();
             participants = new List<Participant>();
             serializer = new XmlSerializer(participants.GetType());
             deserializeParticipants();
@@ -86,6 +92,12 @@ namespace Gewinnspiel.Forms
 
         private void Login()
         {
+            if (txtBenutzer.Text.Equals("") || txtPasswort.Text.Equals(""))
+            {
+                MessageBox.Show("Bitte füllen Sie sowohl Benutzer als auch Passwort aus!");
+                return;
+            }
+
             pwCode = verschluesselnSHA512(txtPasswort.Text);
 
             foreach (Participant p in participants)
